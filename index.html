@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+	<style>
+	*{margin: 0;padding: 0;}
+	#box{width:660px;margin: 0 auto;border: 1px solid #000;padding: 10px;background: pink;height: 200px;position: relative;overflow: hidden;}
+	#oul{list-style: none;position: absolute;left: 10px;top: 10px;height: 200px;width: 1320px;}
+	#oul li{float: left;margin-right: 10px;}
+	#oul img{width: 100px;height: 200px;}
+	</style>
+</head>
+<body>
+	<input type="button" id="l" value="向左走">
+	<input type="button" id="r" value="向右走">
+<div id="box">
+	<ul id="oul">
+		<li><img src="img/a1.jpg"></li>
+		<li><img src="img/a2.jpg"></li>
+		<li><img src="img/a3.jpg"></li>
+		<li><img src="img/a4.jpg"></li>
+		<li><img src="img/a5.jpg"></li>
+		<li><img src="img/a6.jpg"></li>
+	</ul>
+</div>	
+<script>
+    var box=document.getElementById('box')
+	var oul=document.getElementById('oul')
+	var l=document.getElementById('l')
+	var r=document.getElementById('r')
+	oul.innerHTML=oul.innerHTML+oul.innerHTML
+	i=-2;
+	l.onclick=function  () {
+		i=-2;
+		change();
+	}
+	r.onclick=function  () {
+		i=2;
+		change();
+	}
+	function change () {
+		
+		if(oul.offsetLeft<-oul.offsetWidth/2){
+
+			 
+      		oul.style.left=0;
+
+		}
+		if(oul.offsetLeft>0){
+
+			 
+      		oul.style.left=-oul.offsetWidth/2+"px";
+
+		}
+
+		oul.style.left=oul.offsetLeft+i+"px"
+       
+	
+	}
+	
+	tome=setInterval(change,30)
+
+
+	box.onmouseover=function  () {
+		clearInterval(tome)
+	}
+	box.onmouseout=function  () {
+		tome=setInterval(change,30)
+	}
+	alert(typeof oul.offsetLeft)
+</script>
+</body>
+</html>
